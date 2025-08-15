@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fake News Detector</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+          />
+          <span>Fake News Detector</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container fade-in">
+      <!-- Left Section -->
+      <div class="form-section">
+        <h1>📰 Fake News Detector</h1>
+        <p class="subtitle">Detect misinformation instantly with AI power</p>
+
+        <form method="POST" action="/predict" class="card">
+          <label>News URL</label>
+
+          <label>Title</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter the article headline..."
+          />
+
+          <label>Article Text</label>
+          <textarea
+            name="text"
+            rows="8"
+            placeholder="Paste the full article text here..."
+          ></textarea>
+
+          <button type="submit" class="btn-gradient">🚀 Check Now</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result fade-in">
+          <h2>Prediction Result</h2>
+          <p>
+            {% if prediction == "REAL" %}
+            <span class="real">{{ prediction }}</span>
+            {% else %}
+            <span class="fake">{{ prediction }}</span>
+            {% endif %}
+          </p>
+          <p class="confidence">Confidence: {{ (prob * 100) | round(2) }}%</p>
+        </div>
+        {% endif %} {% if fetched_title or fetched_text %}
+        <div class="card">
+          <h3>🔍 Article Extracted from URL</h3>
+          {% if fetched_title %}
+          <p><strong>Title:</strong> {{ fetched_title }}</p>
+          {% endif %} {% if fetched_text %}
+          <details>
+            <summary>Show full article text</summary>
+            <pre style="white-space: pre-wrap">{{ fetched_text }}</pre>
+          </details>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Stats -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <p>Articles Checked Today</p>
+            <h2 class="counter" data-target="142">0</h2>
+          </div>
+          <div class="stat-card">
+            <p>% Fake News</p>
+            <h2 class="counter" data-target="37">0</h2>
+          </div>
+          <div class="stat-card">
+            <p>% Real News</p>
+            <h2 class="counter" data-target="63">0</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar fade-in-delay">
+        <div class="sidebar-card">
+          <h3>🔥 Trending Headlines</h3>
+          <ul id="trending-news">
+            <li>Loading...</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <h3>☀ Weather</h3>
+          <form id="city-form">
+            <input
+              type="text"
+              id="city-input"
+              placeholder="Enter city..."
+              required
+            />
+            <button type="submit">Search</button>
+          </form>
+          <p id="weather">Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Ticker -->
+    <div class="ticker-wrapper">
+      <div class="ticker">
+        <div class="ticker-item">Abhishek Thummanapelli</div>
+        <div class="ticker-item">Sam Obaidi</div>
+        <div class="ticker-item">Abhishek Thummanapelli</div>
+        <div class="ticker-item">Sam Obaidi</div>
+      </div>
+    </div>
+
+    <!-- API Keys for JS -->
+    <script>
+      const API_KEYS = {
+        weather: "{{ weather_api_key }}",
+        news: "{{ news_api_key }}",
+      };
+    </script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </body>
+</html>

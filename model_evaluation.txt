@@ -1,0 +1,5 @@
+Model: SBERT + Logistic Regression
+Accuracy: 0.9499
+Precision: 0.9503
+Recall: 0.9499
+F1 Score: 0.9499

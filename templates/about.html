@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us - Fake News Detector</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" />
+          <span>Fake News Detector</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}" class="active">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Background Animation -->
+    <div class="background-animation"></div>
+
+    <!-- Main Content -->
+    <div class="container fade-in">
+      <h1 class="title">About Us</h1>
+      <p class="subtitle">
+        This project was developed to detect fake news using Natural Language
+        Processing (NLP). It analyzes headlines and article text to determine if
+        a news piece is real or fake.
+      </p>
+      <p>
+        Our mission is to combat misinformation by providing a quick and
+        reliable AI-powered detection tool. We believe in promoting truth,
+        transparency, and critical thinking in the digital world.
+      </p>
+    </div>
+
+    <!-- Bottom Ticker -->
+    <div class="ticker-wrapper">
+      <div class="ticker">
+        <div class="ticker-item">Abhishek Thummanapelli</div>
+        <div class="ticker-item">Sam Obaidi</div>
+
+        <div class="ticker-item">Abhishek Thummanapelli</div>
+        <div class="ticker-item">Sam Obaidi</div>
+      </div>
+    </div>
+  </body>
+</html>

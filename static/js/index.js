@@ -2,7 +2,7 @@
 
 // --- Fetch Weather ---
 async function loadWeather(city = "New York") {
-    const apiKey = OPENWEATHER_API_KEY.weather; // Use the key from the global object
+    const apiKey = API_KEYS.weather; // Use the key from the global object
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
 
     try {
@@ -33,7 +33,7 @@ async function loadWeather(city = "New York") {
 
 // --- Fetch Trending News ---
 async function loadTrendingNews() {
-    const apiKey = NEWS_API_KEY.news; // Use the key from the global object
+    const apiKey = API_KEYS.news; // Use the key from the global object
     const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=3&apiKey=${apiKey}`;
 
     try {

@@ -109,7 +109,11 @@ def predict_label(title: str, body: str):
 
 @app.get("/")
 def home():
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        weather_api_key=os.getenv("OPENWEATHER_API_KEY"),
+        news_api_key=os.getenv("NEWS_API_KEY"),
+    )
 
 
 # Added back About route to avoid BuildError

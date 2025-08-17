@@ -25,10 +25,6 @@ project-root/
 
 ---
 
-### Model download from here
-
-https://drive.google.com/file/d/15N4QmwZC3WDFeVgBrFdaAIs2ZPMOyPmp/view?usp=drive_link
-
 ### Training data download from here
 
 https://drive.google.com/file/d/1W4GH2-KQoo8S73zpytmI5D6kJjd_1TFf/view?usp=drive_link
